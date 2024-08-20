@@ -1,4 +1,4 @@
-package com.starseaoj.starseaoj_backend_user_service;
+package com.starseaoj.userservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
