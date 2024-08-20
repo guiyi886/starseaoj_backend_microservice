@@ -1,4 +1,4 @@
-package com.starseaoj.starseaoj_backend_service_client;
+package com.starseaoj.serviceclient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
