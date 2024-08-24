@@ -1,4 +1,4 @@
-package com.starseaoj.starseaoj_backend_question_service;
+package com.starseaoj.questionservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

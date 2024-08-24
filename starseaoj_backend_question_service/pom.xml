@@ -74,7 +74,7 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>
-                        com.starseaoj.starseaoj_backend_question_service.StarseaojBackendQuestionServiceApplication
+                        com.starseaoj.questionservice.StarseaojBackendQuestionServiceApplication
                     </mainClass>
                     <skip>true</skip>
                 </configuration>
