@@ -56,7 +56,7 @@ knife4j:
       default:
         api-rule: package
         api-rule-resources:
-          - com.starseaoj.userservice.controller
+          - com.starseaoj.questionservice.controller
 # 代码沙箱配置
 codesandbox:
   type: remote
