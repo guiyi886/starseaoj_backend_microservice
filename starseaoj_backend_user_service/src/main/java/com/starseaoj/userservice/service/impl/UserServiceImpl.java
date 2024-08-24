@@ -12,7 +12,7 @@ import com.starseaoj.model.entity.User;
 import com.starseaoj.model.enums.UserRoleEnum;
 import com.starseaoj.model.vo.LoginUserVO;
 import com.starseaoj.model.vo.UserVO;
-import com.starseaoj.serviceclient.service.UserService;
+import com.starseaoj.serviceclient.UserService;
 import com.starseaoj.userservice.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

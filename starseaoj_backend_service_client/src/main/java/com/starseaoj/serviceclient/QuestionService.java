@@ -1,4 +1,4 @@
-package com.starseaoj.serviceclient.service;
+package com.starseaoj.serviceclient;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
