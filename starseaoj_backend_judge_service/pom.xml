@@ -73,7 +73,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.starseaoj.starseaoj_backend_judge_service.StarseaojBackendJudgeServiceApplication
+                    <mainClass>com.starseaoj.judgeservice.StarseaojBackendJudgeServiceApplication
                     </mainClass>
                     <skip>true</skip>
                 </configuration>

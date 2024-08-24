@@ -1,4 +1,4 @@
-package com.starseaoj.starseaoj_backend_judge_service;
+package com.starseaoj.judgeservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
