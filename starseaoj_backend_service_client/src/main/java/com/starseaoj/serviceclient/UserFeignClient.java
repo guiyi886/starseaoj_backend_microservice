@@ -40,7 +40,7 @@ public interface UserFeignClient {
 
     /**
      * 获取当前登录用户
-     *
+     * default默认实现，相当于工具类方法
      * @param request
      * @return
      */

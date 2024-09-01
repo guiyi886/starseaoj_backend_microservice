@@ -16,9 +16,9 @@ import com.starseaoj.model.enums.QuestionSubmitLanguageEnum;
 import com.starseaoj.model.enums.QuestionSubmitStatusEnum;
 import com.starseaoj.model.vo.QuestionSubmitVO;
 import com.starseaoj.questionservice.mapper.QuestionSubmitMapper;
+import com.starseaoj.questionservice.service.QuestionService;
 import com.starseaoj.questionservice.service.QuestionSubmitService;
 import com.starseaoj.serviceclient.JudgeFeignClient;
-import com.starseaoj.serviceclient.QuestionFeignClient;
 import com.starseaoj.serviceclient.UserFeignClient;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -40,14 +40,14 @@ import java.util.stream.Collectors;
 public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper, QuestionSubmit>
         implements QuestionSubmitService {
     @Resource
-    private QuestionFeignClient questionFeignClient;
+    private QuestionService questionService;
 
     @Resource
     private UserFeignClient userFeignClient;
 
     @Resource
     @Lazy   // 延迟加载
-    private JudgeFeignClient judgeService;
+    private JudgeFeignClient judgeFeignClient;
 
     /**
      * 提交题目
@@ -66,7 +66,7 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
         }
         long questionId = questionSubmitAddRequest.getQuestionId();
         // 判断实体是否存在，根据类别获取实体
-        Question question = questionFeignClient.getQuestionById(questionId);
+        Question question = questionService.getById(questionId);
         if (question == null) {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
         }
@@ -88,7 +88,7 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
         Long questionSubmitId = questionSubmit.getId();
         // 执行判题服务
         CompletableFuture.runAsync(() -> {
-            judgeService.doJudge(questionSubmitId);
+            judgeFeignClient.doJudge(questionSubmitId);
         });
         return questionSubmitId;
     }

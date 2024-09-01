@@ -13,7 +13,7 @@ import com.starseaoj.model.dto.user.*;
 import com.starseaoj.model.entity.User;
 import com.starseaoj.model.vo.LoginUserVO;
 import com.starseaoj.model.vo.UserVO;
-import com.starseaoj.serviceclient.UserService;
+import com.starseaoj.userservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
