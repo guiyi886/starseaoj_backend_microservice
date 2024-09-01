@@ -7,10 +7,10 @@
         <artifactId>starseaoj_backend_microservice</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>starseaoj_backend_gateway</artifactId>
+    <artifactId>starseaoj-backend-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>starseaoj_backend_gateway</name>
-    <description>starseaoj_backend_gateway</description>
+    <name>starseaoj-backend-gateway</name>
+    <description>starseaoj-backend-gateway</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

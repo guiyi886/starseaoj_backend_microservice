@@ -10,7 +10,7 @@
     <description>starseaoj_backend_microservice</description>
     <modules>
         <module>starseaoj_backend_common</module>
-        <module>starseaoj_backend_gateway</module>
+        <module>starseaoj-backend-gateway</module>
         <module>starseaoj-backend-judge-service</module>
         <module>starseaoj_backend_model</module>
         <module>starseaoj-backend-question-service</module>
