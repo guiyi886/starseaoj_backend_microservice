@@ -19,7 +19,7 @@ import static com.starseaoj.common.constant.UserConstant.USER_LOGIN_STATE;
 /**
  * 用户服务
  */
-@FeignClient(name = "starseaoj_backend_user_service", path = "/api/user/inner")
+@FeignClient(name = "starseaoj-backend-user-service", path = "/api/user/inner")
 public interface UserFeignClient {
 
     /**

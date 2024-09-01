@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * 题目服务
  */
-@FeignClient(name = "starseaoj_backend_question_service", path = "/api/question/inner")
+@FeignClient(name = "starseaoj-backend-question-service", path = "/api/question/inner")
 public interface QuestionFeignClient {
     @GetMapping("/get/id")
     Question getQuestionById(@RequestParam("questionId") long questionId);
