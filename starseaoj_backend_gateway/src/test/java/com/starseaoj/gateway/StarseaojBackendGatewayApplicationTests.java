@@ -1,4 +1,4 @@
-package com.starseaoj.starseaoj_backend_gateway;
+package com.starseaoj.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

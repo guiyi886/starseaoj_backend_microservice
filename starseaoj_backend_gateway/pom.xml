@@ -70,7 +70,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.starseaoj.starseaoj_backend_gateway.StarseaojBackendGatewayApplication</mainClass>
+                    <mainClass>com.starseaoj.gateway.StarseaojBackendGatewayApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>
