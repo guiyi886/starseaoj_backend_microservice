@@ -17,9 +17,9 @@ import com.starseaoj.model.enums.QuestionSubmitStatusEnum;
 import com.starseaoj.model.vo.QuestionSubmitVO;
 import com.starseaoj.questionservice.mapper.QuestionSubmitMapper;
 import com.starseaoj.questionservice.service.QuestionSubmitService;
-import com.starseaoj.serviceclient.JudgeService;
-import com.starseaoj.serviceclient.QuestionService;
-import com.starseaoj.serviceclient.UserService;
+import com.starseaoj.serviceclient.JudgeFeignClient;
+import com.starseaoj.serviceclient.QuestionFeignClient;
+import com.starseaoj.serviceclient.UserFeignClient;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -40,14 +40,14 @@ import java.util.stream.Collectors;
 public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper, QuestionSubmit>
         implements QuestionSubmitService {
     @Resource
-    private QuestionService questionService;
+    private QuestionFeignClient questionFeignClient;
 
     @Resource
-    private UserService userService;
+    private UserFeignClient userFeignClient;
 
     @Resource
     @Lazy   // 延迟加载
-    private JudgeService judgeService;
+    private JudgeFeignClient judgeService;
 
     /**
      * 提交题目
@@ -66,7 +66,7 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
         }
         long questionId = questionSubmitAddRequest.getQuestionId();
         // 判断实体是否存在，根据类别获取实体
-        Question question = questionService.getById(questionId);
+        Question question = questionFeignClient.getQuestionById(questionId);
         if (question == null) {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
         }
@@ -130,7 +130,7 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
         // 脱敏：仅本人和管理员能看见自己（提交 userId 和登录用户 id 不同）提交的代码
         long userId = loginUser.getId();
         // 处理脱敏
-        if (userId != questionSubmit.getUserId() && !userService.isAdmin(loginUser)) {
+        if (userId != questionSubmit.getUserId() && !userFeignClient.isAdmin(loginUser)) {
             questionSubmitVO.setCode(null);
         }
         return questionSubmitVO;

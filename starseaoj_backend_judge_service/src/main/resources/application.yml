@@ -32,7 +32,7 @@ server:
   address: localhost
   port: 8104
   servlet:
-    context-path: /api
+    context-path: /api/judge
     # cookie 30 天过期
     session:
       cookie:
