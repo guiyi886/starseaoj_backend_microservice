@@ -4,6 +4,7 @@ import com.starseaoj.model.entity.User;
 import com.starseaoj.serviceclient.UserFeignClient;
 import com.starseaoj.userservice.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,8 @@ import java.util.List;
 /**
  * 内部调用服务
  */
-@RestController("/inner")
+@RestController
+@RequestMapping("/inner")
 public class UserInnerController implements UserFeignClient {
 
     @Resource

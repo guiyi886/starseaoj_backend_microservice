@@ -3,3 +3,4 @@ spring:
     nacos:
       discovery:
         server-addr: 8.134.202.187:8848
+        ip: 127.0.0.1
