@@ -78,5 +78,4 @@ public interface UserFeignClient {
         BeanUtils.copyProperties(user, userVO);
         return userVO;
     }
-
 }

@@ -32,7 +32,6 @@ public class UserInnerController implements UserFeignClient {
         return userService.getById(userId);
     }
 
-
     /**
      * 根据id获取用户列表
      *
@@ -44,5 +43,4 @@ public class UserInnerController implements UserFeignClient {
     public List<User> listByIds(@RequestParam("userIdList") Collection<Long> userIdList) {
         return userService.listByIds(userIdList);
     }
-
 }
