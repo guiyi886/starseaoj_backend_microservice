@@ -28,6 +28,10 @@ spring:
     timeout: 5000
     # username: root
     # password: guiyi886
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.134.202.187:8848
 server:
   address: localhost
   port: 8104
