@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.134.202.187:8848
+        ip: 127.0.0.1
+    gateway:
+      routes:
+        - id: starseaoj-backend-user-service
+          uri: lb://starseaoj-backend-user-service
+          predicates:
+            - Path=/api/user/**
+        - id: starseaoj-backend-question-service
+          uri: lb://starseaoj-backend-question-service
+          predicates:
+            - Path=/api/question/**
+        - id: starseaoj-backend-judge-service
+          uri: lb://starseaoj-backend-judge-service
+          predicates:
+            - Path=/api/judge/**
+  application:
+    name: starseaoj-backend-gateway
+  main:
+    web-application-type: reactive
+server:
+  port: 8101
