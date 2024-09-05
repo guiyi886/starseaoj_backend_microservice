@@ -16,19 +16,17 @@ import com.starseaoj.model.enums.QuestionSubmitLanguageEnum;
 import com.starseaoj.model.enums.QuestionSubmitStatusEnum;
 import com.starseaoj.model.vo.QuestionSubmitVO;
 import com.starseaoj.questionservice.mapper.QuestionSubmitMapper;
+import com.starseaoj.questionservice.message.MyMessageProducer;
 import com.starseaoj.questionservice.service.QuestionService;
 import com.starseaoj.questionservice.service.QuestionSubmitService;
-import com.starseaoj.serviceclient.JudgeFeignClient;
 import com.starseaoj.serviceclient.UserFeignClient;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 /**
@@ -45,9 +43,15 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
     @Resource
     private UserFeignClient userFeignClient;
 
+    // @Resource
+    // @Lazy   // 延迟加载
+    // private JudgeFeignClient judgeFeignClient;
+
+    /**
+     * 消息队列-消息生产者
+     */
     @Resource
-    @Lazy   // 延迟加载
-    private JudgeFeignClient judgeFeignClient;
+    MyMessageProducer myMessageProducer;
 
     /**
      * 提交题目
@@ -87,9 +91,11 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
         }
         Long questionSubmitId = questionSubmit.getId();
         // 执行判题服务
-        CompletableFuture.runAsync(() -> {
-            judgeFeignClient.doJudge(questionSubmitId);
-        });
+        // CompletableFuture.runAsync(() -> {
+        //     judgeFeignClient.doJudge(questionSubmitId);
+        // });
+        // 发送消息
+        myMessageProducer.sendMessage("code_exchange", "my_routingKey", String.valueOf(questionSubmitId));
         return questionSubmitId;
     }
 
