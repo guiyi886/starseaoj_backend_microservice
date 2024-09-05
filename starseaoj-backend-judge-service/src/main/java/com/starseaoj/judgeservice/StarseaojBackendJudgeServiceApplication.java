@@ -15,7 +15,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.starseaoj.serviceclient")
 public class StarseaojBackendJudgeServiceApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(StarseaojBackendJudgeServiceApplication.class, args);
     }

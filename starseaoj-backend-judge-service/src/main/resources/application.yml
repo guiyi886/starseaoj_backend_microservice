@@ -28,11 +28,18 @@ spring:
     timeout: 5000
     # username: root
     # password: guiyi886
+  # Nacos 注册中心配置
   cloud:
     nacos:
       discovery:
         server-addr: 8.134.202.187:8848
         ip: 127.0.0.1
+  # RabbitMQ 配置
+  rabbitmq:
+    host: 8.134.202.187
+    port: 5672
+    username: root
+    password: guiyi886
 server:
   address: localhost
   port: 8104
