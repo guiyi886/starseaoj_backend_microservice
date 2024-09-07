@@ -35,10 +35,11 @@ public class MyMessageConsumer {
         // 记录收到的消息
         log.info("receiveMessage message = {}", message);
 
-        // 将收到的消息（字符串）转换为 long 类型的 questionSubmitId，表示题目提交 ID
-        long questionSubmitId = Long.parseLong(message);
-
         try {
+            // 将收到的消息（字符串）转换为 long 类型的 questionSubmitId，表示题目提交 ID
+            // 注意一些异常情况，比如字符串不是数字的形式，抛出异常并从队列中移除
+            long questionSubmitId = Long.parseLong(message);
+
             // 调用业务逻辑进行判题操作
             judgeService.doJudge(questionSubmitId);
 
